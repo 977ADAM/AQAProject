@@ -1,4 +1,4 @@
-name: AQA Tests
+name: CI Tests
 
 on: workflow_dispatch
 
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run AQA-tests via docker-compose
+      - name: Run CI-tests via docker-compose
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
