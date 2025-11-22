@@ -10,21 +10,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Compose
-        run: |
-          sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v3
 
       - name: Run CI-tests via docker-compose
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          docker-compose up --exit-code-from regression || true
+          docker-compose up --exit-code-from regression --abort-on-container-exit || true
 
       - name: Generate Allure report
+        env:
+          LOGIN: ${{ secrets.LOGIN }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          docker-compose run regression /bin/sh -c "allure generate allure-results --clean -o allure-report"
+          mkdir -p allure-report
+          
+          docker cp $(docker-compose ps -q regression):/app/allure-results ./allure-results/ || true
+          
+          docker run --rm \
+            -v "$PWD/allure-results:/allure-results" \
+            -v "$PWD/allure-report:/allure-report" \
+            allure-commandline/allure:latest \
+            generate /allure-results --clean -o /allure-report
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
