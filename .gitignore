@@ -1,4 +1,7 @@
 venv
+__pycashe__
 .idea
 .env
-*__pycashe__/
+.pytest_cashe
+
+
