@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install Docker Compose
+        run: sudo apt-get install docker-compose -y
+        
       - name: Run UI-tests via docker-compose
         env:
           LOGIN: ${{ secrets.LOGIN }}
