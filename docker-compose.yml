@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: regression-tests
     volumes:
-      - ./:/usr/workspace:rw
+      - ./:/usr/workspace
     command: sh -c "pytest -sv --alluredir=allure-results"
     working_dir: /usr/workspace
     environment:

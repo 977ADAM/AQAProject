@@ -8,8 +8,7 @@ RUN apk update && \
     openjdk11-jre \
     curl \
     tar \
-    bash \
-    && rm -rf /var/cache/apk/*
+    bash
 
 ENV ALLURE_VERSION=2.35.1
 RUN curl -f -o allure-${ALLURE_VERSION}.tgz -Ls \

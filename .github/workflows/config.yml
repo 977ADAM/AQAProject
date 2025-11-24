@@ -23,8 +23,6 @@ jobs:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          set -e
-          docker compose build
           docker compose up --exit-code-from regression || true
 
       - name: Update history for next run
@@ -48,9 +46,3 @@ jobs:
           branch: gh-pages
           folder: allure-report
           clean: true
-
-      - name: Cleanup Docker
-        if: always()
-        run: |
-          docker compose down
-          docker system prune -f
