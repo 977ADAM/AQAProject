@@ -1,8 +1,4 @@
 FROM python:3.11-alpine3.18
-
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1
     
 RUN apk update && \
     apk add --no-cache \
@@ -26,10 +22,7 @@ WORKDIR /usr/workspace
 
 COPY requirements.txt .
 
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-
-COPY . .
+RUN pip install -r requirements.txt
 
 RUN adduser -D -s /bin/bash worker && \
     chown -R worker:worker /usr/workspace
