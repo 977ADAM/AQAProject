@@ -11,4 +11,4 @@ services:
     command: sh -c "pytest -sv --alluredir=allure-results && allure generate allure-results --clean -o allure-report"
     volumes:
       - ./allure-results:/usr/workspace/allure-results:rw
-      - ./allure-report:/usr/workspace/allure-report
+      - ./allure-report:/usr/workspace/allure-report:rw
