@@ -12,3 +12,4 @@ services:
     volumes:
       - ./allure-results:/usr/workspace/allure-results:rw
       - ./allure-report:/usr/workspace/allure-report:rw
+    user: root
