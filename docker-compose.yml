@@ -4,11 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: regression-tests
-    working_dir: /usr/workspace
     volumes:
-      - ./:/usr/workspace
-    user: root
+      - ./:/usr/workspace:rw
     command: sh -c "pytest -sv --alluredir=allure-results"
+    working_dir: /usr/workspace
     environment:
       - LOGIN=${LOGIN}
       - PASSWORD=${PASSWORD}

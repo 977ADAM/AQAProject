@@ -23,8 +23,3 @@ WORKDIR /usr/workspace
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
-
-RUN adduser -D -s /bin/bash worker && \
-    chown -R worker:worker /usr/workspace
-
-USER worker
