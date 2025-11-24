@@ -27,7 +27,7 @@ jobs:
 
       - name: Update history for next run
         run: |
-          sudo mkdir -p allure-report/history
+          sudo mkdir -p allure-results/history
           sudo cp -R ./.github/gh-pages/history/* allure-results/history/
 
       - name: Generate Allure report
