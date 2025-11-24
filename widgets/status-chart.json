@@ -1,1 +1,1 @@
-[{"uid":"3924c9228dd6058c","name":"Change profile name","time":{"start":1763953279446,"stop":1763953288265,"duration":8819},"status":"passed","severity":"critical"}]
+[{"uid":"2944b4cb8290826","name":"Change profile name","time":{"start":1763956722069,"stop":1763956743403,"duration":21334},"status":"broken","severity":"critical"}]
