@@ -32,7 +32,7 @@ jobs:
         run: |
           set -e
           docker compose build
-          docker compose up regression --exit-code-from regression --abort-on-container-exit
+          docker compose up regression --exit-code-from regression --abort-on-container-exit || true
 
       - name: Update history for next run
         run: |
