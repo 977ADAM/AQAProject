@@ -30,7 +30,7 @@ jobs:
       - name: Update history for next run
         run: |
           mkdir -p allure-report/history
-          cp -r ./.github/gh-pages/history/* allure-results/history/ || true
+          cp -r ./.github/gh-pages/history/* allure-results/history/
 
       - name: Generate Allure report
         run: |
@@ -38,7 +38,7 @@ jobs:
 
       - name: Update Allure history
         run: |
-          cp -r allure-report/history/* ./.github/gh-pages/history/ || true
+          cp -r allure-report/history/* ./.github/gh-pages/history/
 
 
       - name: Deploy to GitHub Pages
